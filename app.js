@@ -1,9 +1,11 @@
-const password = "basedrapist"; // Set your password here
-const signaturesUrl = "signatures.json"; // Path to the JSON file containing signature data
+const storedHash = "99c0a12047e1d0092c6d2c0b15ce5551"; // MD5 hash of the correct password
+const signaturesUrl = "signatures.json";
 
 function authenticate() {
   const inputPassword = document.getElementById("password").value;
-  if (inputPassword === password) {
+  const inputHash = md5(inputPassword); // Hash the input password
+
+  if (inputHash === storedHash) {
     document.getElementById("login").style.display = "none";
     document.getElementById("main-content").style.display = "block";
     loadSignatures();
@@ -16,8 +18,8 @@ async function loadSignatures() {
   const response = await fetch(signaturesUrl);
   const signatures = await response.json();
 
-  const tableBody = document.getElementById("signature-table-body");
-  tableBody.innerHTML = ""; // Clear any existing rows
+  const signatureTableBody = document.getElementById("signature-table").querySelector("tbody");
+  signatureTableBody.innerHTML = "";
 
   signatures.forEach((signature) => {
     const row = document.createElement("tr");
@@ -27,7 +29,13 @@ async function loadSignatures() {
       <td>${signature.offset}</td>
       <td>${signature.pattern}</td>
       <td>${signature.lastUpdate}</td>
+      <td><button onclick="editSignature('${signature.name}')">Edit</button></td>
     `;
-    tableBody.appendChild(row);
+
+    signatureTableBody.appendChild(row);
   });
+}
+
+function editSignature(signatureName) {
+  // Function to handle editing; populate a form or modal to submit changes
 }
