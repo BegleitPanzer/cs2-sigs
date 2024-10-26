@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS2 Signature Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div id="login">
+    <h1>Login</h1>
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="authenticate()">Submit</button>
+    <p id="error-message"></p>
+  </div>
+
+  <div id="main-content" style="display: none;">
+    <h1>Signature Manager</h1>
+    <div id="signature-list"></div>
+  </div>
+</body>
+</html>
