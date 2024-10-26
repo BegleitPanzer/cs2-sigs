@@ -1,12 +1,14 @@
 [
   {
     "name": "Signature 1",
-    "value": "abcd1234"
-    "lastup": "27 June 24"
+    "offset": "0x1234ABCD",
+    "pattern": "AB CD EF 12 34",
+    "lastUpdate": "2024-10-26"
   },
   {
     "name": "Signature 2",
-    "value": "efgh5678"
-    "lastup": "27 June 24"
+    "offset": "0x5678EFGH",
+    "pattern": "56 78 90 12 34",
+    "lastUpdate": "2024-10-25"
   }
 ]
