@@ -16,17 +16,18 @@ async function loadSignatures() {
   const response = await fetch(signaturesUrl);
   const signatures = await response.json();
 
-  const signatureList = document.getElementById("signature-list");
-  signatureList.innerHTML = "<h2>Stored Signatures</h2>";
+  const tableBody = document.getElementById("signature-table-body");
+  tableBody.innerHTML = ""; // Clear any existing rows
 
   signatures.forEach((signature) => {
-    const signatureDiv = document.createElement("div");
-    signatureDiv.classList.add("signature");
+    const row = document.createElement("tr");
 
-    signatureDiv.innerHTML = `
-      <p><strong>Name:</strong> ${signature.name}</p>
-      <p><strong>Signature:</strong> ${signature.value}</p>
+    row.innerHTML = `
+      <td>${signature.name}</td>
+      <td>${signature.offset}</td>
+      <td>${signature.pattern}</td>
+      <td>${signature.lastUpdate}</td>
     `;
-    signatureList.appendChild(signatureDiv);
+    tableBody.appendChild(row);
   });
 }
